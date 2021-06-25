@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Calories Calculator</string>
+    <string name="base_url">https://trackapi.nutritionix.com/</string>
+</resources>
