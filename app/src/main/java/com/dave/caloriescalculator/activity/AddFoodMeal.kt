@@ -102,7 +102,8 @@ class AddFoodMeal : AppCompatActivity() {
     private fun getAutoCompleteData(queryItem: String) {
 
         /**
-         * Search for data when its been populated using the text watcher and search from provided endpoint
+         * Search for data when its been populated using the text watcher
+         * and search from provided endpoint
          */
         CoroutineScope(Dispatchers.IO).launch {
 

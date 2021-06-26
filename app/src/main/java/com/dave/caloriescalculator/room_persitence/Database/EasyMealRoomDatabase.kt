@@ -10,6 +10,12 @@ import com.uptech.easymeal.room_persitence.Entity.Mealinfo
 
 @Database(
 
+    /**
+     * Create a database instance of the room database
+     * Include all entities you will use
+     * Associate the db with a dao that contains the sql statements
+     * Have a version for the current db version
+     */
         entities = [
             Mealinfo::class, FoodDetailsinfo::class
         ],

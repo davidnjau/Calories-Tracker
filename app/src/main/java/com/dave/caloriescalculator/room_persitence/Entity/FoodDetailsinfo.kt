@@ -6,6 +6,10 @@ import androidx.room.PrimaryKey
 
 @Entity(tableName = "food_info")
 data class FoodDetailsinfo(
+        /**
+         * Create tables in the db by using the entity annotation,
+         * indicate the columns and assign a PK
+         */
 
         val food_name: String,
         val servings: String,

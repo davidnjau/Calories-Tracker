@@ -9,6 +9,10 @@ import java.util.concurrent.TimeUnit
 
 
 object RetrofitBuilder {
+    /**
+     * Indicate the timeout for retrofit
+     *
+     */
 
     fun getRetrofit(BASE_URL:String): Retrofit {
 

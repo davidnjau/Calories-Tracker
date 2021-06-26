@@ -81,7 +81,8 @@ class MyMealsEditAdapter(
                 val btnAddServings = view.findViewById<View>(R.id.btnAddServings) as Button
 
                 /**
-                 * Handle, individual clicks
+                 * Handle, individual clicks, return saved value and display data on textview
+                 * The values are also updated on the recyclerview using LiveData
                  */
 
                 btnAddCalories.setOnClickListener {
@@ -120,7 +121,8 @@ class MyMealsEditAdapter(
     private fun calculator(action: String, foodId:Int, type: String):String {
 
         /**
-         * Handle the subsequest clicks for editing; either addition or reduction of calories or servings
+         * Handle the sub-sequest clicks for editing; either addition or reduction of
+         * calories or servings
          */
 
         val easyMealViewModel = EasyMealViewModel(application)
@@ -138,6 +140,8 @@ class MyMealsEditAdapter(
 
                 /**
                  * Cannot update anything less than 1
+                 * Check the passed action; addition & subtraction.
+                 * Perform the action and update in room persitence
                  */
 
                 if (action == "add"){
@@ -166,6 +170,8 @@ class MyMealsEditAdapter(
             if (servings >= 1){
                 /**
                  * Cannot update anything less than 1
+                 * Check the passed action; addition & subtraction.
+                 * Perform the action and update in room persitence
                  */
                 if (action == "add"){
                     val newValue = servings + 1

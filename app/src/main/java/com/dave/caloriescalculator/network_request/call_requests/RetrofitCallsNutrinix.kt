@@ -22,7 +22,7 @@ class RetrofitCallsNutrinix {
     :Pair<List<CommonData>, List<BrandedData>> {
         /**
          * Fetch Nutritionix endpoint using a provided query,
-         * populate the headers, and add the result to a list
+         * populate the headers, and add the result to a list and return the two list as a pair
          */
 
         var stringStringMap = HashMap<String, String>()
@@ -43,6 +43,10 @@ class RetrofitCallsNutrinix {
                 apiService.getQueryItems(stringStringMap, query)
 
             try {
+                /**
+                 * Use execute to wait for the results
+                 * This has to be done on a IO thread and not on the main thread
+                 */
                 val response: Response<ResponseQueryItems> = callSync.execute()
                 commonList = response.body()!!.common as ArrayList<CommonData>
                 brandedList = response.body()!!.branded as ArrayList<BrandedData>
@@ -62,6 +66,11 @@ class RetrofitCallsNutrinix {
     }
     private suspend fun fetchByQRCode(context: Context, query : String):ArrayList<FoodDetailsinfo> {
 
+        /**
+         * Fetch Nutritionix endpoint using a provided query,
+         * populate the headers, and add the result to a list and return the two list as a pair
+         */
+
         var stringStringMap = HashMap<String, String>()
         stringStringMap["x-app-id"] = "9545d122"
         stringStringMap["x-app-key"] = "b5ff9d080007c16d594350fe3af61105"
@@ -74,6 +83,10 @@ class RetrofitCallsNutrinix {
 
             val baseUrl = context.getString(R.string.base_url)
 
+            /**
+             * Use execute instead of enque to wait for the results
+             * This has to be done on a IO thread and not on the main thread
+             */
             val apiService = RetrofitBuilder.getRetrofit(baseUrl).create(Interface::class.java)
             val callSync: Call<ResponsePostItems> =
                 apiService.getQueryQRCode(stringStringMap, query)
@@ -108,6 +121,10 @@ class RetrofitCallsNutrinix {
     }
     private suspend fun fetchCommonData(context: Context, query: String): FoodDetails {
 
+        /**
+         * Use execute to wait for the results
+         * This has to be done on a IO thread and not on the main thread
+         */
         var stringStringMap = HashMap<String, String>()
         stringStringMap["x-app-id"] = "9545d122"
         stringStringMap["x-app-key"] = "b5ff9d080007c16d594350fe3af61105"
@@ -134,6 +151,10 @@ class RetrofitCallsNutrinix {
 
                 for (items in foodList) {
 
+                    /**
+                     * Check if the passed name and the name from the list matches
+                     * If so stop the fetch; and return the values
+                     */
                     foodName = items.food_name
                     if (foodName == query) {
 

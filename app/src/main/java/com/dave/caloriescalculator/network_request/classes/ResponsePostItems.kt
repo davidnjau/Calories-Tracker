@@ -2,6 +2,9 @@ package com.dave.caloriescalculator.network_request.classes
 
 import com.google.gson.annotations.SerializedName
 
+/**
+ * Indicates a data class that contains a format that we expect from an endpoint
+ */
 data class ResponsePostItems(
     @SerializedName("foods") val foods: List<FoodDetails>,
 )

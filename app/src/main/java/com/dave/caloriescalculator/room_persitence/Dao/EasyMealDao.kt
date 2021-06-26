@@ -11,6 +11,10 @@ import com.uptech.easymeal.room_persitence.Entity.Mealinfo
 
 @Dao
 interface EasyMealDao {
+    /**
+     * Contains the query parameters for accessing the db
+     * The dao gets called by the repository according the MVVM architecture
+     */
 
     @Query("SELECT * from meal_info")
     fun getMealLiveUrls(): LiveData<List<Mealinfo>>

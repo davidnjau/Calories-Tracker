@@ -15,6 +15,12 @@ import kotlinx.coroutines.runBlocking
 
 class EasyMealViewModel(application: Application) : AndroidViewModel(application) {
 
+    /**
+     * Gets data from the repository observing the MVVM architecture
+     * all methods here are quite the same with the ones in the repository,
+     * as these are just for passing parameters and receiving results
+     */
+
     private val repository: EasyMealRepository
     val urlsfoodList: LiveData<List<FoodDetailsinfo>>
 

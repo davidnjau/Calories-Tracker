@@ -8,6 +8,10 @@ import retrofit2.http.*
 
 
 interface Interface {
+    /**
+     * Indicates all the endpoints to be consumed and their required parameters
+     * and the type of response required
+     */
 
     @POST("v2/natural/nutrients")
     fun postNutrients(@HeaderMap headers: Map<String, String>, @Body queryBody: QueryBody): Call<ResponsePostItems>

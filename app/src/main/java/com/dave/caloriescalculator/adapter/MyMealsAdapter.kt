@@ -104,6 +104,9 @@ class MyMealsAdapter(
 
     override fun onBindViewHolder(holder: Pager2ViewHolder, position: Int) {
 
+        /**
+         * Populate fields respectively
+         */
         val mealName = myFoodList[position].mealName
         val calories = "${myFoodList[position].caloriesNo} Cal"
         val servings = "${myFoodList[position].servings} Servings"
